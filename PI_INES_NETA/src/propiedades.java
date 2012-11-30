@@ -12,6 +12,7 @@ public class propiedades {
 	String temp_outFile;
 	String outFile;
 	String hora_generacion;
+	String piconfig;
 	
 	Properties prop  = new Properties();
 	
@@ -40,6 +41,14 @@ public class propiedades {
 		}catch(IOException e){
 		}
 		return hora_generacion;
+		}
+	String piconfig(){
+		try{
+			prop.load(new FileInputStream(archivo_properties));
+			piconfig = prop.getProperty("piconfig");
+		}catch(IOException e){
+		}
+		return piconfig;
 		}
 
 }

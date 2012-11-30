@@ -117,7 +117,7 @@ public class pi_to_ines_neta {
 				 }else{
 					 generar_ahora = 0;
 					 ///////////////////////////////PARA TESTS 
-					 generar_ahora = 1;
+				//	 generar_ahora = 1;
 					 /////////////////////////////PARA TESTS 
 				 }
 				} catch (InterruptedException e) {
@@ -133,6 +133,7 @@ public class pi_to_ines_neta {
 				String temp_outFile = Archivopropiedades.temp_outFile();
 				//Archivo de salida
 				String outFile = Archivopropiedades.outFile();
+				String piconfig = Archivopropiedades.piconfig();
 				System.out.println(temp_outFile);
 				System.out.println(outFile);
 				//Definimos un nuevo Calendar.
@@ -216,7 +217,10 @@ public class pi_to_ines_neta {
 				Runtime rt = Runtime.getRuntime();
 				Process pr1;
 				String archivo_salida = temp_outFile + "AmorebietaPotNetaPlantData_" + año_actual + mes_actual  + "_INES.dat";
-				String rt_exec = "cmd /c D://PI//adm//piconfig < 0INEStag.txt > " + archivo_salida;
+				//String rt_exec = "cmd /c D://PI//adm//piconfig < 0INEStag.txt > " + archivo_salida;
+		//	String rt_exec = "cmd /c \"C://Program Files (x86)//PIPC//adm//piconfig\" -node 10.34.4.19 -port 5450 -username piadmin < 0INEStag.txt > " + archivo_salida;
+			String rt_exec = "cmd /c \""+ piconfig +  "\" -node 10.34.4.19 -port 5450 -username piadmin < 0INEStag.txt > " + archivo_salida;
+			
 				pr1 = rt.exec(rt_exec);
 				
 				System.out.println(rt_exec);
@@ -252,13 +256,7 @@ public class pi_to_ines_neta {
 			e.printStackTrace();
 		}	
 					
-				
-		
-			 
-			 
-			 
-			 
-			 
+						 
 			 
 		}
 		
